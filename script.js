@@ -40,7 +40,7 @@ const pages = [
     prompt: "請輸入 「□□□□□」 ", placeholder: "請輸入答案…", answer: "我獨自升級", locked: true
   },
   {
-    type: "input", title: "", story: `準備好了嗎?\n後續每道關卡\n請認真觀看提示\n可能會有意想不到的驚喜唷(つ≧維≦)つ`,
+    type: "input", title: "", story: `準備好了嗎?\n後續每道關卡\n請認真觀看提示\n可能會有意想不到的驚喜唷(つ≧口≦)つ`,
     prompt: "請輸入 「□□□」 ", placeholder: "請輸入答案…", answer: "新娘篇", locked: true
   },
   {
