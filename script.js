@@ -105,7 +105,7 @@ const pages = [
     prompt: "（請輸入新郎寶貝的「□□□」cc 重型機車）", placeholder: "請輸入數字", answer: "650"
   },
   {
-    type: "imageText", image: ["ec650.jpg"], story: `沒錯！\n就是陪伴我許多旅程的 C650！\n今天就靠你載我去迎接人生最重要的另一半！`, next: true
+    type: "imageText", image: ["ec650.jpg"], story: `沒錯！\n就是陪伴我許多旅程的 C650！\n今天就靠你載 me 去迎接人生最重要的另一半！`, next: true
   },
   {
     type: "input", story: `我們要抵達的位置於：\n靚點飯店的天日廳 2 樓\n共有 200 位賓客需要前往會場\n\n館內設有電梯，其規格如下：\n\n最大載重：900 公斤\n每趟最多搭乘：12 人\n\n賓客體重統計如下：`,
@@ -141,6 +141,27 @@ const pages = [
 
 const fullFlow = pages;
 let current = 0;
+
+// ================================
+// 🌟 核心新功能：圖片背景預載入機制 (Preload)
+// ================================
+const preloadedImages = new Set();
+
+function preloadNextImages(currentIndex) {
+  // 自動預先下載未來 3 個關卡的所有圖片
+  for (let i = currentIndex + 1; i <= currentIndex + 3 && i < fullFlow.length; i++) {
+    const page = fullFlow[i];
+    if (page && page.image && Array.isArray(page.image)) {
+      page.image.forEach(imgSrc => {
+        if (!preloadedImages.has(imgSrc)) {
+          const img = new Image();
+          img.src = imgSrc;
+          preloadedImages.add(imgSrc);
+        }
+      });
+    }
+  }
+}
 
 // ================================
 // 2. 玩家資料與 LocalStorage 設定
@@ -199,7 +220,7 @@ function normalize(s) {
 
 function isCorrect(kind, value) {
   const v = normalize(value);
-if (kind === "couple") {
+  if (kind === "couple") {
     return v === "林恩澤黄筱雯" || v === "黄筱雯林恩澤";
   }
   if (kind === "charity") {
@@ -385,6 +406,9 @@ function showPage(i) {
     slot.classList.add("active");
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
+
+  // 🌟 每次切換頁面時，自動觸發背景預載未來 3 關的圖片
+  preloadNextImages(current);
 }
 
 function readAnswer() {
