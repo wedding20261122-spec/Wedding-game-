@@ -105,7 +105,7 @@ const pages = [
     prompt: "（請輸入新郎寶貝的「□□□」cc 重型機車）", placeholder: "請輸入數字", answer: "650"
   },
   {
-    type: "imageText", image: ["ec650.jpg"], story: `沒錯！\n就是陪伴我許多旅程的 C650！\n今天就靠你載 me 去迎接人生最重要的另一半！`, next: true
+    type: "imageText", image: ["ec650.jpg"], story: `沒錯！\n就是陪伴我許多旅程的 C650！\n今天就靠你載我去迎接人生最重要的另一半！`, next: true
   },
   {
     type: "input", story: `我們要抵達的位置於：\n靚點飯店的天日廳 2 樓\n共有 200 位賓客需要前往會場\n\n館內設有電梯，其規格如下：\n\n最大載重：900 公斤\n每趟最多搭乘：12 人\n\n賓客體重統計如下：`,
@@ -215,7 +215,7 @@ function normalize(s) {
     .trim()
     .toLowerCase()
     .replace(/[\s\u3000]+/g, "")
-    .replace(/[，,。．.·・！!、/／\-—_「」『』（()()：:；;～~]/g, "");
+    .replace(/[，,。．.·・！!、/／\-—_「`」『』（()()：:；;～~]/g, "");
 }
 
 function isCorrect(kind, value) {
