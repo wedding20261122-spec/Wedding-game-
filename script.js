@@ -98,7 +98,7 @@ const pages = [
     prompt: "（請輸入「□□」）", placeholder: "請輸入答案…", answer: "ring"
   },
   {
-    type: "imageText", image: ["e6.jpg"], story: `原來是婚戒！\n怎麼躲在這裡啊！\n也不會自己出來打聲招呼\n害我找了老半天\n\n有了婚戒\n終於可以放心出門了\n\n等等……\n\n今天還得去迎接新娘\n可是平常上班騎的機車偏偏在今天罷工……\n看來只好派出我的寶貝了！`, next: true
+    type: "text", story: `原來是婚戒！\n怎麼躲在這裡啊！\n也不會自己出來打聲招呼\n害我找了老半天\n\n有了婚戒\n終於可以放心出門了\n\n等等……\n\n今天還得去迎接新娘\n可是平常上班騎的機車偏偏在今天罷工……\n看來只好派出我的寶貝了！`, next: true
   },
   {
     type: "inputImage", image: ["e650.jpg"], story: "",
